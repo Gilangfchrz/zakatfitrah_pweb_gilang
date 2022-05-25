@@ -20,7 +20,7 @@ if (mysqli_connect_errno()) {
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Muzakki</title>
+    <title>Distribusi Warga</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
@@ -37,43 +37,42 @@ if (mysqli_connect_errno()) {
     </div>
 </nav>
 <div class="content">
-    <h2>Data Muzakki</h2>
-    <a href="muzakki.php">Kembali</a>
+    <h2>Data Distribusi Lainnya</h2>
+    <a href="mustahik.php">Kembali</a>
     <div>
-        <p>Edit informasi Muzakki :</p>
+        <p>Edit informasi Distribusi Lainnya :</p>
         <table border="1">
             <?php
             $id = $_GET['id'];
-            $data = mysqli_query($con,"select * from muzakki where id='$id'");
+            $data = mysqli_query($con,"select * from mustahik_lainnya where id='$id'");
             while($d = mysqli_fetch_array($data)){
                 ?>
-                <center>
-                <form method="post" action="update.php">
+                <form method="post" action="update_distribusilainnya.php">
                     <table>
                         <tr>
                             <td>ID</td>
-                            <td><input type="text" name="id_muzakki" value="<?php echo $d['id_muzakki']; ?>"></td>
+                            <td><input type="text" name="id_mustahiklainnya" value="<?php echo $d['id_mustahiklainnya']; ?>"></td>
                         </tr>
                         <tr>
                             <td>Nama</td>
                             <td>
                                 <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                                <input type="text" name="nama_muzakki" value="<?php echo $d['nama_muzakki']; ?>">
+                                <input type="text" name="nama" value="<?php echo $d['nama']; ?>">
                             </td>
-                        </tr>
-                        <tr>
-                            <td>Tanggungan</td>
-                            <td><input type="text" name="jumlah_tanggungan" value="<?php echo $d['jumlah_tanggungan']; ?>"></td>
                         </tr>
                         <tr>
                             <td>Keterangan</td>
                             <td><input type="text" name="keterangan" value="<?php echo $d['keterangan']; ?>"></td>
                         </tr>
                         <tr>
+                            <td>Hak</td>
+                            <td><input type="text" name="hak" value="<?php echo $d['hak']; ?>"></td>
+                        </tr>
+                        <tr>
                             <td></td>
                             <td><input type="submit" value="Simpan"></td>
                         </tr>
-                    </table></center>
+                    </table>
                 </form>
                 <?php
             }

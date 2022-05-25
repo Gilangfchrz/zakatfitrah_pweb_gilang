@@ -36,15 +36,17 @@ $stmt->close();
 <nav class="navtop">
     <div>
     <img src="asset/logo.png" alt="">
-        <h1>Sistem Informasi Zakat Fitrah</h1>
+        <h1>Zakat Fitrah</h1>
+        <a href="home.php"><i class="fas fa-user-circle"></i>Dashboard</a>
         <a href="muzakki.php"><i class="fas fa-user-circle"></i>Muzakki</a>
         <a href="mustahik.php"><i class="fas fa-user-circle"></i>Mustahik</a>
+        <a href="bayarzakat.php"><i class="fas fa-user-circle"></i>BayarZakat</a>
         <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
     </div>
 </nav>
 <div class="content">
     <h2>Data Muzakki</h2>
-    <a href="input_muzakki.php">Input Data Muzakki</a>
+    <a href="input_muzakki.php"><i class="circle">Input Data Muzakki</a>
     <div>
         <h1>Detail informasi Muzakki </h1>
         <table cellspacing='0' align="center">

@@ -15,11 +15,11 @@ if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 // We don't have the password or email info stored in sessions so instead we can get the results from the database.
-$stmt = $con->prepare('SELECT id_kategori, nama_kategori, jumlah_hak FROM kategori_mustahik WHERE id = ?');
+$stmt = $con->prepare('SELECT id_mustahiklainnya, nama, keterangan, hak FROM mustahik_lainnya WHERE id = ?');
 // In this case we can use the account ID to get the account info.
 $stmt->bind_param('i', $_SESSION['id']);
 $stmt->execute();
-$stmt->bind_result($id_kategori, $nama_kategori, $jumlah_hak);
+$stmt->bind_result($id_mustahiklainnya, $nama, $keterangan ,$hak);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -28,7 +28,7 @@ $stmt->close();
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Mustahik</title>
+    <title>Distribusi Lainnya</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
@@ -45,36 +45,36 @@ $stmt->close();
     </div>
 </nav>
 <div class="content">
-    <h2>Data Mustahik</h2>
-    <a href="input_mustahik.php"><i class="circle">Input Data Mustahik</a><br>
-    <a href="distribusiwarga.php"><i class="circle">Distribusi Warga</a><br>
-    <a href="distribusilainnya.php"><i class="circle">Distribusi Lainnya</a>
+    <h2>Data Distribusi Lainnya</h2>
+    <a href="input_distribusilainnya.php"><i class="circle">Input Data Distribusi</a>
     <div>
-        <h1>Detail informasi Mustahik </h1>
+        <h1>Detail informasi Lainnya</h1>
         <table cellspacing='0' align="center">
             <thead>
             <tr>
                 <th>No</th>
                 <th>ID</th>
                 <th>Nama</th>
-                <th>Jumlah Hak</th>
+                <th>keterangan</th>
+                <th>Hak</th>
                 <th>Konfigurasi</th>
             </tr>
             </thead>
             <?php
             $no = 1;
-            $data = mysqli_query($con,"select * from kategori_mustahik");
+            $data = mysqli_query($con,"select * from mustahik_lainnya");
             while($d = mysqli_fetch_array($data)){
                 ?>
                     <tbody>
                 <tr>
                     <td><?php echo $no++; ?></td>
-                    <td><?php echo $d['id_kategori']; ?></td>
-                    <td><?php echo $d['nama_kategori']; ?></td>
-                    <td><?php echo $d['jumlah_hak']; ?></td>
+                    <td><?php echo $d['id_mustahiklainnya']; ?></td>
+                    <td><?php echo $d['nama']; ?></td>
+                    <td><?php echo $d['keterangan']; ?></td>
+                    <td><?php echo $d['hak']; ?></td>
                     <td>
-                        <a href="edit_mustahik.php?id=<?php echo $d['id']; ?>">Edit</a>
-                        <a href="hapus_mustahik.php?id=<?php echo $d['id']; ?>">Hapus</a>
+                        <a href="edit_distribusilainnya.php?id=<?php echo $d['id']; ?>">Edit</a>
+                        <a href="hapus_distribusilainnya.php?id=<?php echo $d['id']; ?>">Hapus</a>
                     </td>
                 </tr>
                     </tbody>

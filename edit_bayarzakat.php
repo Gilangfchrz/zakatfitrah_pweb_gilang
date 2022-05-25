@@ -20,7 +20,7 @@ if (mysqli_connect_errno()) {
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Muzakki</title>
+    <title>BayarZakat</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
@@ -29,7 +29,6 @@ if (mysqli_connect_errno()) {
     <div>
     <img src="asset/logo.png" alt="">
         <h1>Zakat Fitrah</h1>
-        <a href="home.php"><i class="fas fa-user-circle"></i>Dashboard</a>
         <a href="muzakki.php"><i class="fas fa-user-circle"></i>Muzakki</a>
         <a href="mustahik.php"><i class="fas fa-user-circle"></i>Mustahik</a>
         <a href="bayarzakat.php"><i class="fas fa-user-circle"></i>BayarZakat</a>
@@ -37,43 +36,56 @@ if (mysqli_connect_errno()) {
     </div>
 </nav>
 <div class="content">
-    <h2>Data Muzakki</h2>
-    <a href="muzakki.php">Kembali</a>
+    <h2>Data BayarZakat</h2>
+    <a href="bayarzakat.php">Kembali</a>
     <div>
-        <p>Edit informasi Muzakki :</p>
+        <p>Edit informasi BayarZakat :</p>
         <table border="1">
             <?php
             $id = $_GET['id'];
-            $data = mysqli_query($con,"select * from muzakki where id='$id'");
+            $data = mysqli_query($con,"select * from bayarzakat where id='$id'");
             while($d = mysqli_fetch_array($data)){
                 ?>
-                <center>
-                <form method="post" action="update.php">
+                <form method="post" action="update_bayarzakat.php">
                     <table>
-                        <tr>
+                    <tr>
+                    <tr>
                             <td>ID</td>
-                            <td><input type="text" name="id_muzakki" value="<?php echo $d['id_muzakki']; ?>"></td>
+                            <td><input type="text" name="id_zakat" value="<?php echo $d['id_zakat']; ?>"></td>
                         </tr>
                         <tr>
                             <td>Nama</td>
                             <td>
                                 <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                                <input type="text" name="nama_muzakki" value="<?php echo $d['nama_muzakki']; ?>">
+                                <input type="text" name="nama_kk" value="<?php echo $d['nama_kk']; ?>">
                             </td>
                         </tr>
                         <tr>
-                            <td>Tanggungan</td>
+                            <td>Jumlah Tanggungan</td>
                             <td><input type="text" name="jumlah_tanggungan" value="<?php echo $d['jumlah_tanggungan']; ?>"></td>
                         </tr>
                         <tr>
-                            <td>Keterangan</td>
-                            <td><input type="text" name="keterangan" value="<?php echo $d['keterangan']; ?>"></td>
+                            <td>Jenis Bayar</td>
+                            <td><label><input type="radio" name="jenis_bayar" id="beras" value="beras" />Beras</label>
+                            <label><input type="radio" name="jenis_bayar" id="uang" value="uang" />Uang</label></td>
                         </tr>
                         <tr>
+                            <td>Tanggungan yang Dibayar:</td>
+                            <td><input type="text" name="jumlah_tanggunganyangdibayar"></td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Beras:</td>
+                            <td><input type="text" name="bayar_beras"></td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Uang:</td>
+                            <td><input class="form-control readonly" type="text" name="bayar_uang"></td> <readonly>
+                        </tr>
+            <tr>
                             <td></td>
                             <td><input type="submit" value="Simpan"></td>
                         </tr>
-                    </table></center>
+                    </table>
                 </form>
                 <?php
             }

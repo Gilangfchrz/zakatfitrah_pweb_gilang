@@ -19,7 +19,7 @@ if (mysqli_connect_errno()) {
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Mustahik</title>
+    <title>Distribusi Warga</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
@@ -36,22 +36,26 @@ if (mysqli_connect_errno()) {
     </div>
 </nav>
 <div class="content">
-    <h2>Master Data Mustahik</h2>
+    <h2>Master Data Distribusi Lainnya</h2>
     <div>
-        <p>Silahkan Masukkan Informasi Mustahik</p>
-        <form method="post" action="input_data_mustahik.php">
+        <p>Silahkan Masukkan Informasi Distribusi Lainnya</p>
+        <form method="post" action="input_data_distribusilainnya.php">
         <table>
             <tr>
                 <td>ID:</td>
-                <td><input type="text" name="id_kategori"></td>
+                <td><input type="text" name="id_mustahiklainnya"></td>
             </tr>
             <tr>
                 <td>Nama:</td>
-                <td><input type="text" name="nama_kategori"></td>
+                <td><input type="text" name="nama"></td>
             </tr>
             <tr>
-                <td>Jumlah Hak:</td>
-                <td><input type="text" name="jumlah_hak"></td>
+                <td>Keterangan:</td>
+                <td><input type="text" name="keterangan"></td>
+            </tr>
+            <tr>
+                <td>Hak:</td>
+                <td><input type="text" name="hak"></td>
             </tr>
             <tr>
                 <td></td>
